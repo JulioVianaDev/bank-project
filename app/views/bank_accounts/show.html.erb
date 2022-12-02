@@ -1,0 +1,21 @@
+<h1><%= @bank_account.account_number %> </h1>
+<h2> <%= @bank_account.client %></h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Date of transaction</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Transaction type</th>
+    </tr>
+  </thead>
+  <tbody>
+   <div id="clients">
+    <% @bank_account.account_transactions.each do |t|%>
+      <tr>
+        <td><%= t.created_at %></td>
+        <td><%= t.transaction_type %></td>
+        <td><%= number_to_currency(t.amount, unit:"R$")%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -14,11 +14,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_022503) do
   create_table "account_transactions", force: :cascade do |t|
     t.decimal "amount"
     t.string "transaction_type"
-    t.integer "banck_account_id", null: false
+    t.integer "bank_account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "transaction_number"
-    t.index ["banck_account_id"], name: "index_account_transactions_on_banck_account_id"
+    t.index ["bank_account_id"], name: "index_account_transactions_on_bank_account_id"
   end
 
   create_table "bank_accounts", force: :cascade do |t|
@@ -39,6 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_022503) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "account_transactions", "banck_accounts"
+  add_foreign_key "account_transactions", "bank_accounts"
   add_foreign_key "bank_accounts", "clients"
 end
